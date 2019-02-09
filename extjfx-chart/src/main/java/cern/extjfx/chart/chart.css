@@ -1,0 +1,51 @@
+.chart-datapoint-tooltip-label {
+    -fx-background-color: rgb(153.0, 204.0, 204.0);
+    -fx-border-color: black;
+    -fx-border-radius: 3.0;
+    -fx-font-size: 12.0;
+    -fx-font-weight: bold;
+	-fx-text-alignment: center;
+}
+
+.chart-crosshair-path {
+	-fx-stroke-width: 1.0;
+}
+
+.chart-zoom-rect {
+	-fx-fill: dodgerblue;
+	-fx-stroke: #002966 ;
+	-fx-stroke-type: inside;
+	-fx-stroke-width: 1.0;
+	-fx-opacity: 0.2;
+}
+
+.value-indicator-label {
+    -fx-background-color: #f4e242;
+    -fx-border-color: black;
+    -fx-border-radius: 2.0;
+    -fx-font-size: 12.0;
+    -fx-font-weight: bold;
+	-fx-text-alignment: center;
+	-fx-padding: 1.0 2.0 1.0 2.0;
+}
+
+.range-indicator-label {
+    -fx-background-color: #f4e242;
+    -fx-border-color: black;
+    -fx-border-radius: 2.0;
+    -fx-font-size: 12.0;
+    -fx-font-weight: bold;
+	-fx-text-alignment: center;
+	-fx-padding: 1.0 2.0 1.0 2.0;
+}
+
+.value-indicator-line {
+	-fx-stroke-width: 1;
+	-fx-stroke: black;
+	-fx-stroke-dash-array: 8;
+}
+
+.range-indicator-rect {
+	-fx-stroke: transparent;
+	-fx-fill: #416ef468;
+}

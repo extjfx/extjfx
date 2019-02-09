@@ -1,0 +1,7 @@
+.chart {
+	-fx-legend-side: right;
+}
+
+.chart-legend {
+   -fx-background-color: transparent;
+}
