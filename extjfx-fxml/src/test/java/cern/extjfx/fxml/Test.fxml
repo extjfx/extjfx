@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cern.extjfx.fxml.TestController">
+	<children>
+		<fx:include fx:id="header" source="Header.fxml" />
+		<fx:include fx:id="subView1" charset="utf-8" source="SubView.fxml" />
+		<fx:include fx:id="subView2" source="SubView.fxml" />
+		
+        <Button fx:id="cancelButton" layoutX="308.0" layoutY="333.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+	</children>
+</AnchorPane>

@@ -1,0 +1,30 @@
+.chart-bar {
+	-fx-bar-fill: blue;
+}
+
+.chart-datapoint-tooltip-label {
+    -fx-background-color: rgb(153, 204, 204);
+    -fx-border-color: black;
+    -fx-border-radius: 3;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+	-fx-text-alignment: center;
+}
+
+.chart-series-line {    
+    -fx-stroke-width: 1px;
+    -fx-effect: null;
+}
+.chart-plot-background {
+    -fx-background-color: #e2ecfe;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: #3278fa;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #3278fa;
+}
+
+.chart-series-line.series0 { 
+	-fx-stroke: red; 
+}

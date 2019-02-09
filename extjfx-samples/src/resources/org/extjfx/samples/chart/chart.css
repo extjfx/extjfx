@@ -1,0 +1,9 @@
+.chart {
+    -fx-padding: 5px;
+}
+.chart-content {
+    -fx-padding: 0px;
+}
+.chart-series-line {    
+    -fx-stroke-width: 2px;
+}
