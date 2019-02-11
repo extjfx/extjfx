@@ -7,6 +7,7 @@
 		<groupId>cern.extjfx</groupId>
 		<artifactId>extjfx</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
 	</parent>
   <artifactId>extjfx-test</artifactId>
 	<name>extjfx-test</name>

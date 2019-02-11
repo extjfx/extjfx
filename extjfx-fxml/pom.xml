@@ -7,12 +7,14 @@
 		<groupId>cern.extjfx</groupId>
 		<artifactId>extjfx</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
 	</parent>
   <artifactId>extjfx-fxml</artifactId>
 	<name>extjfx-fxml</name>
-	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,4 +48,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<url>https://github.com/extjfx/extjfx</url>
 </project>

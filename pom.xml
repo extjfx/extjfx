@@ -6,4 +6,19 @@
   <packaging>pom</packaging>
   <name>ExtJFX</name>
   <description>JavaFX extensions</description>
+  <modules>
+  	<module>extjfx-chart</module>
+  	<module>extjfx-fxml</module>
+  	<module>extjfx-samples</module>
+  	<module>extjfx-test</module>
+  </modules>
+    <build>
+  	<plugins>
+  	</plugins>
+  </build>
+    <organization>
+    	<name>CERN</name>
+    	<url>http://www.cern.ch</url>
+    </organization>
+    <url>https://github.com/extjfx</url>
 </project>
