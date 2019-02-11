@@ -11,9 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.chart.Chart;
 import javafx.scene.layout.Region;
 
-/**
- * https://wiki.openjdk.java.net/display/OpenJFX/OpenJFX+unit+tests#OpenJFXunittests-TheShims
- */
 public final class XYChartPaneShim {
 
     public static Point2D getLocationInChartPane(XYChartPane<?, ?> chartPane, Node node) {

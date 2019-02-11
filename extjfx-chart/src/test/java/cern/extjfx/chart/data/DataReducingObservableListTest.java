@@ -23,7 +23,6 @@ import javafx.scene.chart.XYChart.Data;
 @RunWith(FxJUnit4Runner.class)
 public class DataReducingObservableListTest {
     
-    @SuppressWarnings("unused")
     @Test(expected=NullPointerException.class)
     public void testNullAxis() {
         new DataReducingObservableList<>(null);

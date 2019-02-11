@@ -155,7 +155,6 @@ public class SeriesTableViewTest {
     /**
      * Adding the control to the Scene and triggering CSS creates skin and initialized TableView.
      */
-    @SuppressWarnings("unused")
     private static <X, Y> SeriesTableView<X, Y> initSkin(SeriesTableView<X, Y> view) {
         new Scene(view, 100, 100);
         view.applyCss();

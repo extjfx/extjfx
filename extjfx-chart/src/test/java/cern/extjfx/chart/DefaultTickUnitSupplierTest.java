@@ -16,19 +16,16 @@ import cern.extjfx.chart.DefaultTickUnitSupplier;
 public class DefaultTickUnitSupplierTest {
     private static final double[] TEST_ARGS = {0.0017, 0.023, 0.74, 1.0, 1.2, 3.4, 5, 6.6, 7, 42, 765};
     
-    @SuppressWarnings("unused")
     @Test(expected=NullPointerException.class)
     public void testNullMultipliers() {
         new DefaultTickUnitSupplier(null);
     }
 
-    @SuppressWarnings("unused")
     @Test(expected=IllegalArgumentException.class)
     public void testEmptyMultipliers() {
         new DefaultTickUnitSupplier(new TreeSet<>());
     }
 
-    @SuppressWarnings("unused")
     @Test(expected=IllegalArgumentException.class)
     public void testOutOfRangeMultipliers() {
         new DefaultTickUnitSupplier(new TreeSet<>(asList(0.5)));
