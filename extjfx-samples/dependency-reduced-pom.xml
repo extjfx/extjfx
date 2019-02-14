@@ -25,7 +25,7 @@
                 <excludes>
                   <exclude>junit:junit</exclude>
                   <exclude>org.mockito:*</exclude>
-                  <exclude>jorg.hamcrest:*</exclude>
+                  <exclude>org.hamcrest:*</exclude>
                   <exclude>cern.extjfx:extjfx-test</exclude>
                 </excludes>
               </artifactSet>
@@ -37,6 +37,9 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
       </plugin>
     </plugins>
   </build>

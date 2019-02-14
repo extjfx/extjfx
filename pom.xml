@@ -1,24 +1,34 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>cern.extjfx</groupId>
-  <artifactId>extjfx</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>ExtJFX</name>
-  <description>JavaFX extensions</description>
-  <modules>
-  	<module>extjfx-chart</module>
-  	<module>extjfx-fxml</module>
-  	<module>extjfx-samples</module>
-  	<module>extjfx-test</module>
-  </modules>
-    <build>
-  	<plugins>
-  	</plugins>
-  </build>
-    <organization>
-    	<name>CERN</name>
-    	<url>http://www.cern.ch</url>
-    </organization>
-    <url>https://github.com/extjfx</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cern.extjfx</groupId>
+	<artifactId>extjfx</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>ExtJFX</name>
+	<description>JavaFX extensions</description>
+	<modules>
+		<module>extjfx-chart</module>
+		<module>extjfx-fxml</module>
+		<module>extjfx-samples</module>
+		<module>extjfx-test</module>
+	</modules>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+		</plugins>
+	</build>
+	<organization>
+		<name>CERN</name>
+		<url>http://www.cern.ch</url>
+	</organization>
+	<url>https://github.com/extjfx</url>
 </project>

@@ -39,6 +39,7 @@ import javafx.scene.chart.XYChart.Data;
  * @param <X> X coordinate type
  * @param <Y> Y coordinate type
  * @author Andreas Schaller
+ * @author Grzegorz Kruk
  */
 public class DataReducingObservableList<X extends Number, Y extends Number>
         extends ModifiableObservableListBase<Data<X, Y>> {

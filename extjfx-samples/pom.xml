@@ -34,7 +34,7 @@
 								<excludes>
 									<exclude>junit:junit</exclude>
 									<exclude>org.mockito:*</exclude>
-									<exclude>jorg.hamcrest:*</exclude>
+									<exclude>org.hamcrest:*</exclude>
 									<exclude>cern.extjfx:extjfx-test</exclude>
 								</excludes>
 							</artifactSet>
@@ -45,6 +45,19 @@
 								</transformer>
 							</transformers>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
