@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>cern.extjfx</groupId>
 		<artifactId>extjfx</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>extjfx-samples</artifactId>
@@ -67,7 +67,7 @@
 		<dependency>
 			<groupId>cern.extjfx</groupId>
 			<artifactId>extjfx-chart</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
 </project>

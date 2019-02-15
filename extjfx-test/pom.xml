@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>cern.extjfx</groupId>
 		<artifactId>extjfx</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>extjfx-test</artifactId>
@@ -37,6 +37,10 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
