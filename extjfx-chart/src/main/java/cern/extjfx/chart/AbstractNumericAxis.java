@@ -213,32 +213,27 @@ public abstract class AbstractNumericAxis extends ValueAxis<Number> {
     protected abstract Range computeRange(double minValue, double maxValue, double axisLength, double labelSize);
 
     /**
-     * Default number formatter for NumberAxis, this stays in sync with auto-ranging and formats values appropriately.
-     * You can wrap this formatter to add prefixes or suffixes;
+     * Default number formatter.
      */
     public static class DefaultFormatter extends StringConverter<Number> {
-        private DecimalFormat formatter;
+        private DecimalFormat decimalFormat;
         private String prefix = null;
         private String suffix = null;
 
         /**
-         * Construct a DefaultFormatter for the given NumberAxis
-         *
-         * @param axis The axis to format tick marks for
+         * @param axis axis to format ticks for
          */
         public DefaultFormatter(AbstractNumericAxis axis) {
-            formatter = new DecimalFormat(axis.currentTickFormat.get());
+            decimalFormat = new DecimalFormat(axis.currentTickFormat.get());
             axis.currentTickFormat.addListener((observable, oldValue, newValue) -> {
-                formatter = new DecimalFormat(axis.currentTickFormat.get());
+                decimalFormat = new DecimalFormat(axis.currentTickFormat.get());
             });
         }
 
         /**
-         * Construct a DefaultFormatter for the given NumberAxis with a prefix and/or suffix.
-         *
-         * @param axis The axis to format tick marks for
-         * @param prefix The prefix to append to the start of formatted number, can be null if not needed
-         * @param suffix The suffix to append to the end of formatted number, can be null if not needed
+         * @param axis axis to format ticks for
+         * @param prefix prefix of the formatter number or {@code null}
+         * @param suffix suffix of the formatter number or {@code null}
          */
         public DefaultFormatter(AbstractNumericAxis axis, String prefix, String suffix) {
             this(axis);
@@ -247,43 +242,35 @@ public abstract class AbstractNumericAxis extends ValueAxis<Number> {
         }
 
         /**
-         * Converts the object provided into its string form. Format of the returned string is defined by this
-         * converter.
-         *
-         * @return a string representation of the object passed in.
-         * @see StringConverter#toString
+         * Formats given number. 
          */
         @Override
-        public String toString(Number object) {
-            return toString(object, formatter);
+        public String toString(Number number) {
+            return toString(number, decimalFormat);
         }
 
-        private String toString(Number object, String numFormatter) {
-            if (numFormatter == null || numFormatter.isEmpty()) {
-                return toString(object, formatter);
+        private String toString(Number object, String format) {
+            if (format == null || format.isEmpty()) {
+                return toString(object, decimalFormat);
             }
-            return toString(object, new DecimalFormat(numFormatter));
+            return toString(object, new DecimalFormat(format));
         }
 
-        private String toString(Number object, DecimalFormat numFormatter) {
+        private String toString(Number object, DecimalFormat formatter) {
             String pref = prefix == null ? "" : prefix;
             String suff = suffix == null ? "" : suffix;
-            return pref + numFormatter.format(object) + suff;
+            return pref + formatter.format(object) + suff;
         }
 
         /**
-         * Converts the string provided into a Number defined by the this converter. Format of the string and type of
-         * the resulting object is defined by this converter.
-         *
-         * @return a Number representation of the string passed in.
-         * @see StringConverter#toString
+         * Converts given string to number, taking into account prefix and suffix. 
          */
         @Override
         public Number fromString(String string) {
             try {
                 int prefixLength = (prefix == null) ? 0 : prefix.length();
                 int suffixLength = (suffix == null) ? 0 : suffix.length();
-                return formatter.parse(string.substring(prefixLength, string.length() - suffixLength));
+                return decimalFormat.parse(string.substring(prefixLength, string.length() - suffixLength));
             } catch (ParseException exc) {
                 throw new IllegalArgumentException(exc);
             }

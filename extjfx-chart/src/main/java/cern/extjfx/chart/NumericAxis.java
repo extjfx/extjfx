@@ -26,8 +26,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ValueAxis;
 
 /**
- * A axis class that plots a range of numbers with major tick marks every "tickUnit". You can use any Number type with
- * this axis, Long, Double, BigDecimal etc.
+ * Linear numeric axis.
  * <p>
  * Compared to the {@link NumberAxis}, this one has a few additional features:
  * <ul>
@@ -91,8 +90,8 @@ public final class NumericAxis extends AbstractNumericAxis {
     };
 
     /**
-     * When {@code true} zero is always included in the visible range. This only has effect if
-     * {@link #autoRangingProperty() auto-ranging} is on.
+     * When set to {@code true} zero is always included in the visible range. 
+     * This only has effect if {@link #autoRangingProperty() auto-ranging} is on.
      *
      * @return forceZeroInRange property
      */
@@ -160,7 +159,7 @@ public final class NumericAxis extends AbstractNumericAxis {
     };
 
     /**
-     * The value between each major tick mark in data units. This is automatically set if we are auto-ranging.
+     * The value between each major tick mark in data units.
      *
      * @return tickUnit property
      */

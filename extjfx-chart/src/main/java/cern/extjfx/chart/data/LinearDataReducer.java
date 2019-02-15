@@ -21,9 +21,8 @@ import javafx.scene.chart.XYChart.Data;
  * therefore contains the same number of points as the original, which may be fewer than the pixels.</li>
  * </ul>
  * 
- * @author Stephane Bart Pedersen, Vito Baggiolini
- * @param <X>
- * @param <Y>
+ * @author Stephane Bart Pedersen
+ * @author Vito Baggiolini
  */
 public class LinearDataReducer<X extends Number, Y extends Number> implements DataReducer<Number, Number>{
 
@@ -34,45 +33,30 @@ public class LinearDataReducer<X extends Number, Y extends Number> implements Da
         return reduce(toXpoints(data), toYpoints(data), dataRange.getLowerBound(), dataRange.getUpperBound(), maxPointsCount);
     }
         
-    private int get_index_start_from_xmin(final double [] xIn, final double xMin) {
-        
-        int ind_start = -1;
-        
+    private int getIndexStartFromXmin(final double [] xIn, final double xMin) {
+        int indStart = -1;
         for (int i = 0; i < xIn.length; i++) {  
             
-            if (xIn[i] >= xMin && ind_start == -1) {
-                
-                ind_start = i;
+            if (xIn[i] >= xMin && indStart == -1) {
+                indStart = i;
                 i = xIn.length;
-                
             }
-            
         }
-        
-        return ind_start;
-        
+        return indStart;
     }
     
-    private int get_index_end_before_xmax(final double [] xIn, final double xMax) {
-        
-        int ind_end = -1;
-        
+    private int getIndexEndBeforeXmax(final double [] xIn, final double xMax) {
+        int indEnd = -1;
         for (int i = xIn.length - 1; i >= 0; i--) { 
-            
-            if (xIn[i] <= xMax && ind_end == -1) {
-                
-                ind_end = i;
+            if (xIn[i] <= xMax && indEnd == -1) {
+                indEnd = i;
                 i = 0;
-                
             }
-            
         }
-        
-        return ind_end;
-        
+        return indEnd;
     }
     
-    private int get_pixel_x_index_from_value_array(final double width_screen, 
+    private int getPixelXIndexFromValueArray(final double width_screen, 
                                                    final double x_value, 
                                                    final double min_x_value_on_screen, 
                                                    final double max_x_value_on_screen) {        
@@ -103,81 +87,63 @@ public class LinearDataReducer<X extends Number, Y extends Number> implements Da
                     
         //No compression if width null or greater than the array size
         if (width_scene == 0 || xIn.length < (2 * width_scene)) {
-            
             xOut = new ArrayList<>();
             yOut = new ArrayList<>();        
             
             for (int i = 0; i < xIn.length; i++) {  
-                
                 xOut.add(xIn[i]);
                 yOut.add(yIn[i]);
-                
             }
-            
-            return copyToResultData(xOut, yOut, width_scene);
-            
-        }
-        
-        int ind_start = get_index_start_from_xmin(xIn, xMin);
-        int ind_end   = get_index_end_before_xmax(xIn, xMax);
-        
-        if (ind_start == -1) {           
             return copyToResultData(xOut, yOut, width_scene);
         }
         
-        List<Double> xOut_tmp = new ArrayList<>();
-        List<Double> yOut_tmp = new ArrayList<>();      
+        int indStart = getIndexStartFromXmin(xIn, xMin);
+        int indEnd   = getIndexEndBeforeXmax(xIn, xMax);
         
-        int xstart = ind_start;
+        if (indStart == -1) {           
+            return copyToResultData(xOut, yOut, width_scene);
+        }
+        
+        List<Double> xOutTmp = new ArrayList<>();
+        List<Double> yOutTmp = new ArrayList<>();      
+        
+        int xstart = indStart;
 
         //Select data (compressed) per pixel 0-w
         for (int i = 0; i < width_scene; i++) {
-            
             List<Double> v_xMergedToPixel = new ArrayList<>();
             List<Double> v_yMergedToPixel = new ArrayList<>();
           
-            for (int k = xstart; k < ind_end; k++) {
-                
-                int xscreen = get_pixel_x_index_from_value_array(width_scene, xIn[k], xMin, xMax);
+            for (int k = xstart; k < indEnd; k++) {
+                int xscreen = getPixelXIndexFromValueArray(width_scene, xIn[k], xMin, xMax);
                 
                 if (xscreen == i) {
-                    
                     v_xMergedToPixel.add(xIn[k]);
                     v_yMergedToPixel.add(yIn[k]);
-                    
-                }
-                else {
-                    
+                } else {
                     xstart = k;
-                    k = ind_end;
-                    
+                    k = indEnd;
                 }
-                
             }
             
             //No points found then add MAX_VALUE to be processed afterward
             if (v_xMergedToPixel.size() == 0) {
-                
-                xOut_tmp.add((xMin + i * (xMax - xMin) / width_scene));
-                yOut_tmp.add(Double.MAX_VALUE);
-                
+                xOutTmp.add((xMin + i * (xMax - xMin) / width_scene));
+                yOutTmp.add(Double.MAX_VALUE);
             }
             //Only 1 points added
             else if (v_xMergedToPixel.size() == 1) {
                 
-                xOut_tmp.add(v_xMergedToPixel.get(0));
-                yOut_tmp.add(v_yMergedToPixel.get(0));
-                
+                xOutTmp.add(v_xMergedToPixel.get(0));
+                yOutTmp.add(v_yMergedToPixel.get(0));
             }
             //Only 2 points added
             else if (v_xMergedToPixel.size() == 2) {
                 
-                xOut_tmp.add(v_xMergedToPixel.get(0));
-                yOut_tmp.add(v_yMergedToPixel.get(0));
-                xOut_tmp.add(v_xMergedToPixel.get(1));
-                yOut_tmp.add(v_yMergedToPixel.get(1));
-                
-                
+                xOutTmp.add(v_xMergedToPixel.get(0));
+                yOutTmp.add(v_yMergedToPixel.get(0));
+                xOutTmp.add(v_xMergedToPixel.get(1));
+                yOutTmp.add(v_yMergedToPixel.get(1));
             }
             //More than 2 points then just add the min and max
             else if (v_xMergedToPixel.size() > 2) {
@@ -187,141 +153,99 @@ public class LinearDataReducer<X extends Number, Y extends Number> implements Da
                 
                 int imin = -1;
                 int imax = -1;
-                
                 for (int j = 0; j < v_xMergedToPixel.size(); j++) {
-                    
                     if (yminloc > v_yMergedToPixel.get(j)) {
-                        
                         yminloc = v_yMergedToPixel.get(j);
                         imin = j;
-                        
                     }
                     
                     if (ymaxloc < v_yMergedToPixel.get(j)) {
-                        
                         ymaxloc = v_yMergedToPixel.get(j);
                         imax = j;
-                        
                     }
-                    
                 }
                 
                 if (imin <= imax) {
                     
                     if (v_yMergedToPixel.get(imin) != v_yMergedToPixel.get(0)) {
-                        
-                        xOut_tmp.add(v_xMergedToPixel.get(0));
-                        yOut_tmp.add(v_yMergedToPixel.get(0));
-                        
+                        xOutTmp.add(v_xMergedToPixel.get(0));
+                        yOutTmp.add(v_yMergedToPixel.get(0));
                     }
  
-                    xOut_tmp.add(v_xMergedToPixel.get(imin));
-                    yOut_tmp.add(v_yMergedToPixel.get(imin));
-                    xOut_tmp.add(v_xMergedToPixel.get(imax));
-                    yOut_tmp.add(v_yMergedToPixel.get(imax));
+                    xOutTmp.add(v_xMergedToPixel.get(imin));
+                    yOutTmp.add(v_yMergedToPixel.get(imin));
+                    xOutTmp.add(v_xMergedToPixel.get(imax));
+                    yOutTmp.add(v_yMergedToPixel.get(imax));
                     
                     if (v_yMergedToPixel.get(imax) != v_yMergedToPixel.get(v_yMergedToPixel.size() - 1)) {
                         
-                        xOut_tmp.add(v_xMergedToPixel.get(v_xMergedToPixel.size() - 1));
-                        yOut_tmp.add(v_yMergedToPixel.get(v_yMergedToPixel.size() - 1));
-                        
+                        xOutTmp.add(v_xMergedToPixel.get(v_xMergedToPixel.size() - 1));
+                        yOutTmp.add(v_yMergedToPixel.get(v_yMergedToPixel.size() - 1));
                     }
-
                 }
                 else {
                     
                     if (v_yMergedToPixel.get(imax) != v_yMergedToPixel.get(0)) {
-                        
-                        xOut_tmp.add(v_xMergedToPixel.get(0));
-                        yOut_tmp.add(v_yMergedToPixel.get(0));
-                        
+                        xOutTmp.add(v_xMergedToPixel.get(0));
+                        yOutTmp.add(v_yMergedToPixel.get(0));
                     }
                     
-                    xOut_tmp.add(v_xMergedToPixel.get(imax));
-                    yOut_tmp.add(v_yMergedToPixel.get(imax));
-                    xOut_tmp.add(v_xMergedToPixel.get(imin));
-                    yOut_tmp.add(v_yMergedToPixel.get(imin));
+                    xOutTmp.add(v_xMergedToPixel.get(imax));
+                    yOutTmp.add(v_yMergedToPixel.get(imax));
+                    xOutTmp.add(v_xMergedToPixel.get(imin));
+                    yOutTmp.add(v_yMergedToPixel.get(imin));
                     
                     if (v_yMergedToPixel.get(imin) != v_yMergedToPixel.get(v_yMergedToPixel.size() - 1)) {
-                        
-                        xOut_tmp.add(v_xMergedToPixel.get(v_xMergedToPixel.size() - 1));
-                        yOut_tmp.add(v_yMergedToPixel.get(v_yMergedToPixel.size() - 1));
-                        
+                        xOutTmp.add(v_xMergedToPixel.get(v_xMergedToPixel.size() - 1));
+                        yOutTmp.add(v_yMergedToPixel.get(v_yMergedToPixel.size() - 1));
                     }
-                    
                 }
-                
             }  
-            
         }
         
         //First point to be added if nothing found (example : zoom)
-        if (yOut_tmp.get(0) == Double.MAX_VALUE) {
-            
-            if (ind_start != 0) {
-                
+        if (yOutTmp.get(0) == Double.MAX_VALUE) {
+            if (indStart != 0) {
                 //New points added = interpolation
-                double valy = yIn[ind_start - 1] + 
-                        (yIn[ind_start] - yIn[ind_start - 1]) * 
-                            (xOut_tmp.get(0) - xIn[ind_start - 1]) / 
-                                (xIn[ind_start] - xIn[ind_start - 1]);
-                xOut_tmp.set(0, valy);
-                
+                double valy = yIn[indStart - 1] + 
+                        (yIn[indStart] - yIn[indStart - 1]) * 
+                            (xOutTmp.get(0) - xIn[indStart - 1]) / 
+                                (xIn[indStart] - xIn[indStart - 1]);
+                xOutTmp.set(0, valy);
            }
-            
         }
         
         //Check whether we have pixel with no points (MAX_VALUE)
-        for (int i = 1; i < xOut_tmp.size(); i++) {
-            
-            ind_end = -1;
-            
-            if (yOut_tmp.get(i) == Double.MAX_VALUE) {
-                
-                for (int j = i; j < xOut_tmp.size(); j++) {
-                    
-                    if (yOut_tmp.get(j) != Double.MAX_VALUE) {
-                        
-                        ind_end = j;
-                        j = xOut_tmp.size();
-                        
+        for (int i = 1; i < xOutTmp.size(); i++) {
+            indEnd = -1;
+            if (yOutTmp.get(i) == Double.MAX_VALUE) {
+                for (int j = i; j < xOutTmp.size(); j++) {
+                    if (yOutTmp.get(j) != Double.MAX_VALUE) {
+                        indEnd = j;
+                        j = xOutTmp.size();
                     }
-                    
                 }
                 
-                if (ind_end != -1) {}
-                else {
-                    
+                if (indEnd != -1) {
+                } else {
                     //No points at the end then remove (no need)
-                    for (int j = i; j < xOut_tmp.size(); j++) {
-                        
-                        xOut_tmp.remove(xOut_tmp.size() - 1);
-                        yOut_tmp.remove(yOut_tmp.size() - 1);
-                        
+                    for (int j = i; j < xOutTmp.size(); j++) {
+                        xOutTmp.remove(xOutTmp.size() - 1);
+                        yOutTmp.remove(yOutTmp.size() - 1);
                     }
-                    
-                    i = xOut_tmp.size();
-                    
+                    i = xOutTmp.size();
                 }
-                
             }
-            
         }     
         
         //Remove unused points
-        for (int i = 0; i < xOut_tmp.size(); i++) {
-            
-            if (yOut_tmp.get(i) != Double.MAX_VALUE) {
-                
-                xOut.add(xOut_tmp.get(i));
-                yOut.add(yOut_tmp.get(i));
-                
+        for (int i = 0; i < xOutTmp.size(); i++) {
+            if (yOutTmp.get(i) != Double.MAX_VALUE) {
+                xOut.add(xOutTmp.get(i));
+                yOut.add(yOutTmp.get(i));
             }
-            
         }
-        
         return copyToResultData(xOut, yOut, width_scene);
-        
     }               
   
     /**
@@ -333,27 +257,19 @@ public class LinearDataReducer<X extends Number, Y extends Number> implements Da
                                                                int maxPointsCount) {
         
         List<Data<Number, Number>> result = new ArrayList<>(maxPointsCount);
-        
         int outDataSize = Math.max(xOut.size(), yOut.size());  
-        
         for (int i = 0; i < outDataSize; i++) {
             result.add(new Data<>(xOut.get(i), yOut.get(i)));
         }
-        
         return result;
-        
     }
 
     private static double [] toAxisPoints(ChartData<Number, Number> chData, boolean isX) {
-        
         double [] res =  new double[chData.size()];
-        
         for (int i = 0; i  < res.length; i++) {
             res[i] = isX ? chData.getXAsDouble(i) : chData.getYAsDouble(i);
         }
-        
         return res;
-        
     }
 
     private static double [] toXpoints(ChartData<Number, Number> chData) {
@@ -363,5 +279,4 @@ public class LinearDataReducer<X extends Number, Y extends Number> implements Da
     private static double [] toYpoints(ChartData<Number, Number> chData) {
         return toAxisPoints(chData, false);
     }               
-
 }
