@@ -4,3 +4,9 @@ jdk:
 - oraclejdk8
 script:
 - xvfb-run mvn test -B
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: echo Deploying...
+    on: 
+      tags: true
