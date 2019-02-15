@@ -3,6 +3,7 @@ sudo: false
 jdk:
 - oraclejdk8
 script:
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=false -B -V
 - xvfb-run mvn test -B
 deploy:
   - provider: script
