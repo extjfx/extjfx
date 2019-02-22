@@ -27,22 +27,19 @@ import javax.inject.Named;
  * A default factory for FXML controllers.
  * <p>
  * This class supports a basic field injection using {@link Inject @Inject} annotation. It can be used to initialize and
- * configure controller, model or service instances, and bind them together. <br/>
+ * configure controller, model or service instances, and bind them together. <br>
  * For every call of {@link #createController(Class)} method - a new controller instance is created, but all the
  * injected dependencies (models, services, etc) are instantiated only once, stored in cache and used as singletons.
- * </p>
  * <p>
  * The factory first makes an attempt to match field to be injected with System properties and then with optional
  * {@link #setPropertiesProvider(Function) properties provider}. The matching is done using {@link Named @Named}
- * annotation if present, otherwise using field's name.<br/>
+ * annotation if present, otherwise using field's name.<br>
  * If no matching property is found, the factory consults dependencies cache trying find a match with the field by
  * <b>exact</b> type. Otherwise it requests {@link #setInstanceProvider(Function) instance provider} to supply a new
  * instance of given type, injects all its dependencies and puts into the cache.
- * </p>
  * <p>
  * For primitive and {@link Enum enum} fields, the class makes a conversion when necessary e.g. when an integer field's
- * value is injected from a System property (String).
- * </p>
+ * value is injected from a System property (String). <br>
  * Example usage:
  *
  * <pre>
@@ -103,6 +100,7 @@ public class DefaultControllerFactory {
     /**
      * Creates a new instance of the given controller class.
      *
+     * @param <T> controller type
      * @param controllerClass class of the FXML controller used to locate the FXML file
      * @return the instance of the controller
      */
@@ -240,14 +238,13 @@ public class DefaultControllerFactory {
      * <p>
      * Example:
      *
-     * <pre>
+     * <pre>{@code 
      * Map<String, Object> props = new HashMap<>();
      * props.put("pool.size", 5);
      * setPropertiesProvider(props::get);
-     * </pre>
-     * </p>
+     * }</pre>
      *
-     * @param propertiesProvider
+     * @param propertiesProvider provider of properties (to be injected)
      */
     public void setPropertiesProvider(Function<String, Object> propertiesProvider) {
         this.propertiesProvider = propertiesProvider;
@@ -255,6 +252,8 @@ public class DefaultControllerFactory {
     
     /**
      * Installs logger receiving debug information.
+     * 
+     * @param logger consumer of debug logs
      */
     public void setLogger(Consumer<String> logger) {
         this.logger = logger;

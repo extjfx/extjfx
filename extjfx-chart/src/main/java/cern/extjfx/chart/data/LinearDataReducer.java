@@ -11,7 +11,6 @@ import javafx.scene.chart.XYChart.Data;
 
 /**
  * Implementation of the DataReducer that reduces a large data set to the number of visible pixels
- * <p>
  * <ul>
  * <li>The algorithm goes through the data along the X axis from xMin to xMax. It typically merges the value of several
  * original points into two pixel value, by picking the minimum and maximum Y value from the original data.</li>

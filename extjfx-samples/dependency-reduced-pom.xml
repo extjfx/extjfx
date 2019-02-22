@@ -3,7 +3,7 @@
   <parent>
     <artifactId>extjfx</artifactId>
     <groupId>cern.extjfx</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>extjfx-samples</artifactId>
@@ -40,6 +40,15 @@
       </plugin>
       <plugin>
         <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

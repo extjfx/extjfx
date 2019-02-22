@@ -23,24 +23,24 @@ import javafx.scene.chart.XYChart.Series;
  * Immutable holder of chart data represented by two primitive arrays (X and Y). Instances of the class can be created
  * using dedicated {@link #builder()} class that allows specifying X and Y coordinates as on the following example:
  *
- * <pre>
+ * <pre>{@code 
  * long[] xValues = ...;
  * float[] yValues = ...;
  * ArrayData<Number, Number> arrayData = ArrayData.builder().x(xValues).y(yValues).build();
  * //Convert to ObservableList that can be given directly to Chart Series
  * ObservableList<Data<Number, Number>> data = arrayData.toObservableList();
- * </pre>
+ * }</pre>
  * 
  * If both arrays are of the same type one of the {@code of(..)} methods can be used instead e.g.:
  * 
- * <pre>
+ * <pre>{@code 
  * double[] xValues = ...;
  * double[] yValues = ...;
  * ObservableList<Data<Number, Number>> data = ArrayData.of(xValues, yValues).toObservableList();
  * 
  * Series<Number, Number> series = ...;
  * series.setData(data);
- * </pre>
+ * }</pre>
  *
  * @param <X> type of X values
  * @param <Y> type of Y values
@@ -104,6 +104,9 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
      * Returns {@code ArrayData} with given Y coordinates. X coordinates are generated automatically as indices of Y
      * coordinates i.e. 0 to y.length - 1.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(byte[] y) {
@@ -114,6 +117,10 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
     /**
      * Returns {@code ArrayData} with given X and Y coordinates.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param x the X data
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(byte[] x, byte[] y) {
@@ -125,6 +132,9 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
      * Returns {@code ArrayData} with given Y coordinates. X coordinates are generated automatically as indices of Y
      * coordinates i.e. 0 to y.length - 1.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(short[] y) {
@@ -135,6 +145,10 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
     /**
      * Returns {@code ArrayData} with given X and Y coordinates.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param x the X data
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(short[] x, short[] y) {
@@ -146,6 +160,9 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
      * Returns {@code ArrayData} with given Y coordinates. X coordinates are generated automatically as indices of Y
      * coordinates i.e. 0 to y.length - 1.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(int[] y) {
@@ -156,6 +173,10 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
     /**
      * Returns {@code ArrayData} with given X and Y coordinates.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param x the X data
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(int[] x, int[] y) {
@@ -167,6 +188,9 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
      * Returns {@code ArrayData} with given Y coordinates. X coordinates are generated automatically as indices of Y
      * coordinates i.e. 0 to y.length - 1.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(long[] y) {
@@ -177,6 +201,10 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
     /**
      * Returns {@code ArrayData} with given X and Y coordinates.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param x the X data
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(long[] x, long[] y) {
@@ -188,6 +216,9 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
      * Returns {@code ArrayData} with given Y coordinates. X coordinates are generated automatically as indices of Y
      * coordinates i.e. 0 to y.length - 1.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(float[] y) {
@@ -198,6 +229,10 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
     /**
      * Returns {@code ArrayData} with given X and Y coordinates.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param x the X data
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(float[] x, float[] y) {
@@ -209,6 +244,9 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
      * Returns {@code ArrayData} with given Y coordinates. X coordinates are generated automatically as indices of Y
      * coordinates i.e. 0 to y.length - 1.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(double[] y) {
@@ -219,6 +257,10 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
     /**
      * Returns {@code ArrayData} with given X and Y coordinates.
      * 
+     * @param <X> X value type
+     * @param <Y> Y value type
+     * @param x the X data
+     * @param y the Y data
      * @return {@code ArrayData} built from given arrays
      */
     public static <X extends Number, Y extends Number> ArrayData<X, Y> of(double[] x, double[] y) {
@@ -229,6 +271,8 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
     /**
      * Creates a new builder of the {@link ArrayData}.
      *
+     * @param <X> X value type
+     * @param <Y> Y value type
      * @return a new builder instance
      */
     public static <X extends Number, Y extends Number> Builder<X, Y> builder() {
@@ -384,6 +428,7 @@ public class ArrayData<X extends Number, Y extends Number> implements ChartData<
          * Builds {@code ArrayData} with given X and Y coordinates. If X coordinates are not specified, the method
          * generates X coordinates as point indices i.e. the X coordinates go from 0 to Y.length - 1.
          * 
+         * @return constructed instance of {@code ArrayData}
          * @throws NullPointerException if the Y coordinates are not provided
          * @throws IllegalArgumentException if given coordinates have different lengths
          */

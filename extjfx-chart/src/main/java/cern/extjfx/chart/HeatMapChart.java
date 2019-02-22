@@ -58,11 +58,10 @@ import javafx.scene.shape.Path;
 import javafx.scene.shape.Rectangle;
 
 /**
- * HeatMapChart is a specialized chart that uses colors to represent data values. An example of a HeatMapChart:
- * <center> <img src="BeamImage.png" width="300" height="300"/> </center> The simplest usage of the chart is following:
- *
- * <pre>
- * &#64;Override
+ * HeatMapChart is a specialized chart that uses colors to represent data values. An example of a HeatMapChart:<br><br>
+ * <img src="doc-files/BeamImage.png" width="300" height="300" alt=""><br><br>
+ * The simplest usage of the chart is following:
+ * <pre>{@code
  * public void start(Stage primaryStage) {
  *     primaryStage.setTitle("HeatMapChart Sample");
  *
@@ -88,7 +87,7 @@ import javafx.scene.shape.Rectangle;
  *     primaryStage.setScene(scene);
  *     primaryStage.show();
  * }
- * </pre>
+ * }</pre>
  *
  * The colors to be used for values encoding can be specified via {@link #colorGradientProperty()} which by default is
  * initialized to {@link ColorGradient#RAINBOW}.
@@ -98,7 +97,6 @@ import javafx.scene.shape.Rectangle;
  * the last {@link ColorGradient#getStops() Stop}. This can be changed by setting appropriate
  * {@link NumericAxis#lowerBoundProperty() lower} and {@link NumericAxis#upperBoundProperty() upper} bound on the
  * {@link #getZAxis() Z axis}.
- * </p>
  *
  * @param <X> type of X values
  * @param <Y> type of Y values
@@ -204,7 +202,7 @@ public class HeatMapChart<X, Y> extends Chart {
      * <p>
      * By default {@link ValueAxis#autoRangingProperty() auto-ranging} is on so that axis
      * {@link ValueAxis#lowerBoundProperty() lower} and {@link ValueAxis#upperBoundProperty() upper} bounds are updated
-     * by the chart according to the {@link #getData() data} min and max value.<br/>
+     * by the chart according to the {@link #getData() data} min and max value.<br>
      * The user can <i>fix</i> the range by setting the {@link ValueAxis#setAutoRanging(boolean) auto-ranging} to
      * {@code false} and specifying the lower and upper bound.
      * </p>
@@ -949,6 +947,7 @@ public class HeatMapChart<X, Y> extends Chart {
          * Returns the gradient stops.
          *
          * @see LinearGradient#getStops()
+         * @return gradient stops
          */
         public List<Stop> getStops() {
             return stops;

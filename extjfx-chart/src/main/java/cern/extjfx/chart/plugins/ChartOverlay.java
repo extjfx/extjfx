@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
  * Typically the node would be a an instance of {@link Pane} containing child nodes. The example below shows how to add
  * a Label to the chart pane, located in the left top corner of the plot area:
  * 
- * <pre>
+ * <pre>{@code
  * XYChartPane<Number, Number> chartPane = ...;
  * 
  * Label label = new Label("Info about chart data");
@@ -29,8 +29,7 @@ import javafx.scene.layout.Pane;
  * anchorPane.setMouseTransparent(true);
  * 
  * chartPane.getPlugins().add(new ChartOverlay<>(OverlayArea.PLOT_AREA, anchorPane));
- * </pre>
- * </p>
+ * }</pre>
  * 
  * @param <X> type of X values
  * @param <Y> type of Y values

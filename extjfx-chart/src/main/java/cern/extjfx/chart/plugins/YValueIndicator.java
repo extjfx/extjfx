@@ -23,7 +23,6 @@ import javafx.scene.chart.ValueAxis;
  * where {@code [index]} corresponds to the index (zero based) of this indicator instance added to the
  * {@code XYChartPane}. For example class {@code y-value-indicator-label1} can be used to style label of the second
  * instance of this indicator added to the chart pane.
- * </p>
  * 
  * @author mhrabia
  * @param <X> type of X values of the {@link XYChartPane} that the plug-in will be applied to

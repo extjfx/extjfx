@@ -120,6 +120,10 @@ public abstract class AbstractSingleValueIndicator<X, Y> extends AbstractValueIn
 
     /**
      * Sets the line coordinates.
+     * @param startX line starting X coordinate
+     * @param startY line starting Y coordinate
+     * @param endX line ending X coordinate
+     * @param endY line ending Y coordinate
      */
     protected void layoutLine(double startX, double startY, double endX, double endY) {
         line.setStartX(startX);

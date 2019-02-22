@@ -42,6 +42,7 @@ public final class Axes {
      * Casts given axis to {@link ValueAxis}.
      *
      * @param axis the axis to be cast
+     * @param <T> axis value type
      * @return given axis
      * @throws IllegalArgumentException if the given axis is not an instance of ValueAxis
      */

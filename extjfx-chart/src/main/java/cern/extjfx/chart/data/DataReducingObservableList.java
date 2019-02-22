@@ -120,6 +120,8 @@ public class DataReducingObservableList<X extends Number, Y extends Number>
 
     /**
      * Array data to be reduced.
+     * 
+     * @return data
      */
     public final ObjectProperty<ChartData<X, Y>> dataProperty() {
         return data;

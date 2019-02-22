@@ -84,7 +84,7 @@ public final class LogarithmicAxis extends AbstractNumericAxis {
     /**
      * Sets value of the {@link #logarithmBaseProperty()}.
      *
-     * @param value base of the logarithm, value > 1
+     * @param value base of the logarithm, value &gt; 1
      */
     public void setLogarithmBase(double value) {
         logarithmBaseProperty().set(value);

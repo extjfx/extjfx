@@ -114,6 +114,7 @@ public abstract class XYChartPlugin<X, Y> {
     /**
      * Convenience method returning a list containing the {@link XYChartPane#getChart() chart pane base chart} and all
      * {@link XYChartPane#getOverlayCharts() overlay charts}.
+     * @return list containing base and all overlay charts
      */
     protected final List<XYChart<X, Y>> getCharts() {
         if (getChartPane() == null) {
@@ -161,6 +162,7 @@ public abstract class XYChartPlugin<X, Y> {
     /**
      * Converts given point in data coordinates to a point in display coordinates.
      *
+     * @param yAxis the Y axis for which conversion should be done
      * @param dataPoint data point to be converted
      * @return corresponding display point within the plot area
      */
@@ -173,6 +175,7 @@ public abstract class XYChartPlugin<X, Y> {
      * Converts given display point within the plot area coordinates to the corresponding data point within data
      * coordinates.
      *
+     * @param yAxis the Y axis for which conversion should be done
      * @param displayPoint the display point to be converted
      * @return the data point
      */

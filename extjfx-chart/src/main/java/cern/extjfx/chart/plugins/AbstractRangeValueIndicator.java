@@ -189,6 +189,8 @@ public abstract class AbstractRangeValueIndicator<X, Y> extends AbstractValueInd
 
     /**
      * Layouts the rectangle and label within given bounds.
+     * 
+     * @param bounds to be applied
      */
     protected void layout(Bounds bounds) {
         if (bounds.intersects(getChartPane().getPlotAreaBounds())) {

@@ -27,6 +27,7 @@ public interface ChartData<X extends Number, Y extends Number> extends Observabl
      * Returns the X coordinate of the data at specified position.
      * 
      * @param index index of the X coordinate to be returned
+     * @return X coordinate at given index
      */
     double getXAsDouble(int index);
 
@@ -34,12 +35,14 @@ public interface ChartData<X extends Number, Y extends Number> extends Observabl
      * Returns the Y coordinate of the data at specified position.
      * 
      * @param index index of the Y coordinate to be returned
+     * @return Y coordinate at given index
      */
     double getYAsDouble(int index);
 
     /**
      * Returns data element at specified position.
      * 
+     * @param index element index, between 0 and {@link #size() size} - 1
      * @return element at specified position
      */
     Data<X, Y> get(int index);

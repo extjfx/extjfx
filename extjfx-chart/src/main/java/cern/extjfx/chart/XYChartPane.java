@@ -66,8 +66,7 @@ import javafx.scene.layout.TilePane;
  * A pane for {@link XYChart}s that allows adding custom {@link #getPlugins() chart plugins} and
  * {@link #getOverlayCharts() overlay} different chart types. The basic usage of the pane is following:
  *
- * <pre>
- * <code>
+ * <pre>{@code 
  * NumericAxis xAxis = new NumericAxis();
  * xAxis.setAnimated(false);
  *
@@ -78,21 +77,18 @@ import javafx.scene.layout.TilePane;
  * LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
  * XYChartPane<Number, Number> chartPane = new XYChartPane<>(lineChart);
  * chartPane.getPlugins().addAll(new Zoomer(), new Panner(), new DataPointTooltip<>());
- * </code>
- * </pre>
+ * }</pre>
  *
  * <b>Note that certain plugin implementations such as {@link Zoomer} or {@link Panner} work properly only if both X and
  * Y axis are instances of {@link NumericAxis}.</b>
  * <p>
  * The overlay charts can be added on top of the base chart:
  *
- * <pre>
- * <code>
+ * <pre>{@code 
  * ScatterChart<Number, Number> overlayChart1 = ...;
  * ScatterChart<Number, Number> overlayChart2 = ...;
  * chartPane.getOverlayCharts().addAll(overlayChart1, overlayChart2);
- * </code>
- * </pre>
+ * }</pre>
  *
  * Constraints concerning overlay charts:
  * <ul>
@@ -279,7 +275,7 @@ public class XYChartPane<X, Y> extends Region {
 
     /**
      * Enables {@link Axis#autoRangingProperty() auto-ranging} property on the {@link #getChart() base chart} Y axis and
-     * possibly on {@link #getOverlayCharts() overlay charts} Y axes. <br/>
+     * possibly on {@link #getOverlayCharts() overlay charts} Y axes. <br>
      * If there are overlay charts added to the pane, their Y axis auto-ranging property is set to {@code true} only if
      * {@link #commonYAxisProperty()} is {@code false}. In other words if there is a single Y axis, the auto-ranging of
      * all overlay chart Y axes should be disabled and follow the Y range of the base chart.

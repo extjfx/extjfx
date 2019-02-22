@@ -118,6 +118,7 @@ public abstract class AbstractValueIndicator<X, Y> extends XYChartPlugin<X, Y> {
     /**
      * Returns the ValueAxis that this indicator is associated with.
      * 
+     * @param chartPane chart pane containing the associated axis
      * @return associated ValueAxis
      */
     protected abstract ValueAxis<?> getValueAxis(XYChartPane<X, Y> chartPane);

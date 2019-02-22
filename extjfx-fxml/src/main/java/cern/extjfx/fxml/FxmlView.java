@@ -26,7 +26,6 @@ import javafx.scene.Parent;
  * <p>
  * Note that despite the conventional names, it is necessary to define {@code fx:controller} attribute on the root node
  * of all FXML files (that have a corresponding controller).
- * </p>
  * <p>
  * The class supports also loading corresponding resource bundle file (if present) that is expected to follow the same
  * naming convention e.g. Main_en_US.properties. The package structure would look in the following way:
@@ -37,7 +36,6 @@ import javafx.scene.Parent;
  * com.mycompany.myapp.Main.css
  * com.mycompany.myapp.Main_en_US.properties
  * </pre>
- * </p>
  * <p>
  * Example usage:
  *
@@ -48,23 +46,19 @@ import javafx.scene.Parent;
  * MainController mainController = mainView.getController();
  * mainController.doSomething();
  * </pre>
- * </p>
  * <p>
  * Controllers are instantiated using {@link #setControllerFactory(Function) controller factory} that by default is
  * initialized to {@link DefaultControllerFactory#createController(Class)} which supports basic Dependency Injection -
- * see doc of this class for details.<br/>
+ * see doc of this class for details.<br>
  * A custom factory can be specified to supply controllers e.g. from an external DI framework.
- * </p>
  * <p>
  * Alternatively to the {@link #setControllerFactory(Function) controller factory}, the controller objects to be used by
  * a particular instance of {@code FxmlView} can be also given directly to the
  * {@link FxmlView#FxmlView(Class, Object...) constructor}.
- * </p>
  * <p>
  * The class has been inspired by Adam Bien's {@code FXMLView} from
  * <a href="http://afterburner.adam-bien.com">afterburner.fx</a> framework with the difference that it doesn't require a
  * separate view class per FXML.
- * </p>
  *
  * @author Olivier Alves
  * @author Grzegorz Kruk
@@ -83,7 +77,7 @@ public class FxmlView {
      * <p>
      * The optional {@code controllers} argument allows specifying directly the controller instances to be used instead
      * of, or in addition to the ones provided by the {@link #getControllerFactory() controller factory} i.e. the
-     * controller factory is consulted only for classes whose instances are not provided in the constructor. <br/>
+     * controller factory is consulted only for classes whose instances are not provided in the constructor. <br>
      * <p>
      * Example:
      *
@@ -105,7 +99,6 @@ public class FxmlView {
      * // using static controller factory
      * FxmlView view = new FxmlView(MainController.class, mainController, headerController);
      * </pre>
-     * </p>
      *
      * @param controllerClass class of the controller for which FXML should be loaded, together with an optional CSS and
      *            resource bundle file
@@ -128,6 +121,7 @@ public class FxmlView {
     /**
      * Returns the main controller of the view.
      *
+     * @param <C> controller type
      * @return controller associated with this view
      * @see FXMLLoader#getController()
      */
@@ -145,6 +139,7 @@ public class FxmlView {
     /**
      * Returns the root node loaded from the FXML.
      *
+     * @param <T> root node type
      * @return the root node
      * @see FXMLLoader#getRoot()
      */

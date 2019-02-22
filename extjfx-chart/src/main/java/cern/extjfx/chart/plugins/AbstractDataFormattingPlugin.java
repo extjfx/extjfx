@@ -119,7 +119,8 @@ public abstract class AbstractDataFormattingPlugin<X, Y> extends XYChartPlugin<X
      * one is also not initialized - a default formatter is used.
      * <p>
      * Can be overridden to modify formatting of the data.
-     *
+     * 
+     * @param yAxis axis for which formatting should be done
      * @param data the data point to be formatted
      * @return formatted data
      */

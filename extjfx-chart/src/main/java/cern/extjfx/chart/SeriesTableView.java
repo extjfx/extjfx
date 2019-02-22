@@ -103,10 +103,10 @@ public class SeriesTableView<X, Y> extends Control {
      * <p>
      * This constructor can be used be used to bind content of this control with series rendered by an {@link XYChart}:
      * 
-     * <pre>
+     * <pre>{@code 
      * LineChart<Number, Number> lineChart = ...;
      * SeriesTableView<Number, Number> chartTable = new SeriesTableView<>(lineChart.dataProperty());
-     * </pre>
+     * }</pre>
      * 
      * In such case any changes of data rendered by the chart will be reflected in the table view.
      * 
