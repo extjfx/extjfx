@@ -10,10 +10,10 @@ The library consists of 3 modules:
 - [extjfx-test](#extjfx-test): `FxJUnit4Runner` to execute GUI tests
 
 
-
+[](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/)
 ## extjfx-chart
 #### XYChartPane
-The central class of the `cern.extjfx.chart` package is `XYChartPane`. It is a container that can hold one or more instances of [XYChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/XYChart.html) (e.g. [LineChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/LineChart.html), [AreaChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/AreaChart.html), [BarChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/BarChart.html)). `XYChartPane` brings support for overlaying different chart types on top of each other (as on the figure below) and possibility to add chart plugins (instances of `cern.extjfx.chart.XYChartPlugin`) which can be either interacting components e.g. `Zoomer` or `Panner`, or passive graphical elements drawn on the chart such as labels or data indicators.
+The central class of the `cern.extjfx.chart` package is [XYChartPane](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/XYChartPane.html). It is a container that can hold one or more instances of [XYChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/XYChart.html) (e.g. [LineChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/LineChart.html), [AreaChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/AreaChart.html), [BarChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/BarChart.html)). `XYChartPane` brings support for overlaying different chart types on top of each other (as on the figure below) and possibility to add chart plugins (instances of [XYChartPlugin](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/XYChartPlugin.html)) which can be either interacting components e.g. [Zoomer](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/Zoomer.html) or [Panner](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/Panner.html), or passive graphical elements drawn on the chart such as labels or data indicators.
 
 ![An example of overlay charts: AreaChart, LineChart and ScatterChart with independent axes for each chart](pics/mixed-chart-types.png?raw=true "Different types of charts overlaid")
 
@@ -117,21 +117,21 @@ public class MixedChartSample extends Application {
 ```
 </details>
 
-The `XYChartPane` allows having single (shared) Y axis or distinct axes, one per overlaid chart. 
+The `XYChartPane` allows having a single (shared) Y axis or distinct axes, one per overlaid chart. 
 
-Note that in order to draw charts properly on top of each other some properties of the overlaid charts are overridden - see JavaDoc of `XYChartPane` for details.
+Note that in order to draw charts properly on top of each other some properties of the overlaid charts are overridden - see JavaDoc of [XYChartPane](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/XYChartPane.html) for details.
 
 #### Chart Plugins 
 
 Chart plugins are add-ons to the standard charts that can be added to the XYChartPane to either interact with chart content or to decorate it.
 Currently the package provides the following plugins:
-- `ChartOverlay` allows adding any node on top of the chart area. 
-- `CrosshairIndicator` a cross (horizontal and vertical line) following mouse cursor and displaying current coordinates
-- `DataPointTooltip` a tooltip label displaying coordinates of the data point hovered by the mouse cursor
-- `Zoomer` zooms the plot area to the dragged rectangle
-- `Panner` allows dragging the visible data window with mouse cursor
-- `XValueIndicator` and `YValueIndicator` a vertical or horizontal line (accordingly) indicating specified X or Y value, with optional text label that can be used to describe the indicated value
-- `XRangeIndicator` and  `YRangeIndicator` a rectangle indicating vertical or horizontal range (accordingly) of X or Y values, with optional text label that can be used to describe the indicated range
+- [ChartOverlay](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/ChartOverlay.html) allows adding any node on top of the chart area. 
+- [CrosshairIndicator](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/CrosshairIndicator.html) a cross (horizontal and vertical line) following mouse cursor and displaying current coordinates
+- [DataPointTooltip](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/DataPointTooltip.html) a tooltip label displaying coordinates of the data point hovered by the mouse cursor
+- [Zoomer](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/Zoomer.html) zooms the plot area to the dragged rectangle
+- [Panner](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/Panner.html) allows dragging the visible data window with mouse cursor
+- [XValueIndicator](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/XValueIndicator.html) and [YValueIndicator](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/YValueIndicator.html) a vertical or horizontal line (accordingly) indicating specified X or Y value, with optional text label that can be used to describe the indicated value
+- [XRangeIndicator](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/XRangeIndicator.html) and [YRangeIndicator](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/YRangeIndicator.html) a rectangle indicating vertical or horizontal range (accordingly) of X or Y values, with optional text label that can be used to describe the indicated range
 
 The following example presents all plugins on a single chart pane.
 
@@ -240,9 +240,9 @@ The resulting chart:
 
 #### NumericAxis and LogarithmicAxis
 
-Note that in the examples above we used `cern.extjfx.chart.NumericAxis` rather than [javafx.scene.chart.NumberAxis](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/NumberAxis.html) which does not support proper recalculation of tick units with auto-range being switched off (necessary behavior for `Zoomer` and `Panner` to work properly).
+Note that in the examples above we used [cern.extjfx.chart.NumericAxis](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/NumericAxis.html) rather than [javafx.scene.chart.NumberAxis](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/NumberAxis.html) which does not support proper recalculation of tick units with auto-range being switched off (necessary behavior for `Zoomer` and `Panner` to work properly).
 
-In addition to the `NumericAxis` the package contains also `LogarithmicAxis` with a configurable logarithm base (by default 10):
+In addition to the [NumericAxis](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/NumericAxis.html) the package contains also [LogarithmicAxis](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/LogarithmicAxis.html) with a configurable logarithm base (by default 10):
 
 ```
 NumericAxis xAxis = new NumericAxis();
@@ -255,7 +255,7 @@ lineChart.setTitle("Test data");
 ![Logarithmic Axis](pics/log-axis.png?raw=true "Logarithmic Axis")
 
 #### HeatMapChart
-`HeatMapChart` is a specialized chart that uses colors to represent data values. 
+[HeatMapChart](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/HeatMapChart.html) is a specialized chart that uses colors to represent data values. 
 The following figure presents a particle beam image rendered using `HeatMapChart`.
 
 ![Beam Image](pics/beam-image.png?raw=true "HeatMapChart")
@@ -283,7 +283,7 @@ chart.setLegendSide(Side.RIGHT);
 ```
 </details>
 
-By default the `HeatMapChart` uses a *rainbow* colors gradient but this can be changed using `colorGradient` property (see JavaDoc for details). 
+By default the `HeatMapChart` uses a *rainbow* colors gradient but this can be changed using [colorGradient](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/HeatMapChart.html#colorGradientProperty--) property (see JavaDoc for details). 
 
 The chart can be also used in combination with JavaFX [CategoryAxis](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/CategoryAxis.html):
 
@@ -334,10 +334,10 @@ private static Data<String, String> createData() {
 The JavaFX charting package performs well with series containing up to a few thousands data points, with rendering time below one second (on a decent desktop computer). 
 However, drawing series containing tens of thousands points takes several seconds, blocking the FX thread and making the application unresponsive.
 
-To overcome the performance issues, the extjfx-chart package provides `DataReducingObservableList` that performs data reduction to the specified number of points within the given X data range. i.e. it reduces only the part of initial data set that is currently visible on the chart.
+To overcome the performance issues, the extjfx-chart package provides [DataReducingObservableList](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/data/DataReducingObservableList.html) that performs data reduction to the specified number of points within the given X data range. i.e. it reduces only the part of initial data set that is currently visible on the chart.
 This means that while performing a zoom-in, one can see "more details" in the interesting region. 
 
-By default `DataReducingObservableList` uses  `DefaultDataReducer` that is an implementation of Ramer-Douglas-Peucker algorithm - sufficiently fast and giving desired results in majority of cases. If zooming-in is not needed, the `DefaultDataReducer` can be used directly to filter the data, before it is passed to the chart. As the alternative, you can also use `LinearDataReducer`.
+By default [DataReducingObservableList](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/data/DataReducingObservableList.html) uses  [DefaultDataReducer](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/data/DefaultDataReducer.html) that is an implementation of Ramer-Douglas-Peucker algorithm - sufficiently fast and giving desired results in majority of cases. If zooming-in is not needed, the `DefaultDataReducer` can be used directly to filter the data, before it is passed to the chart. As the alternative, you can also use [LinearDataReducer](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/data/LinearDataReducer.html).
 
 <details><summary>Example source code (expand)</summary>
 
@@ -359,7 +359,7 @@ reducedData.setData(sourceData);
 
 ## extjfx-fxml
 
-The package contains the `FxmlView` class that for a that for a given controller (class or instance) loads corresponding FXML file and applies associated CSS file (if present). The FXML and CSS files are searched in the same package as controller's class and are expected to have the same conventional name i.e. for `MainController`, they should be called `Main.fxml` and `Main.css` respectively.
+The package contains the [FxmlView](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/fxml/FxmlView.html) class that for a that for a given controller (class or instance) loads corresponding FXML file and applies associated CSS file (if present). The FXML and CSS files are searched in the same package as controller's class and are expected to have the same conventional name i.e. for `MainController`, they should be called `Main.fxml` and `Main.css` respectively.
 
 The class supports also loading corresponding resource bundle file (if present) that is expected to follow the same
 naming convention e.g.`Main_en_US.properties`. The package structure would look in the following way:
@@ -380,14 +380,14 @@ mainController.doSomething();
 ```
 
 Controllers are instantiated using configured controller factory that by default is
-initialized to `DefaultControllerFactory.createController(Class)` which supports basic Dependency Injection (see doc of this class for details).
+initialized to [DefaultControllerFactory.createController(Class)](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/fxml/DefaultControllerFactory.html#createController-java.lang.Class-) which supports basic Dependency Injection (see [JavaDoc](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/fxml/DefaultControllerFactory.html) for details).
 
 The `FxmlView` class was inspired by Adam Bien's `FXMLView` from the [afterburner.fx](http://afterburner.adam-bien.com) framework, 
 with the difference that it doesn't require a separate view class per FXML.
 
 ## extjfx-test
 
-Contains `FxJUnit4Runner` - a JUnit runner to execute JavaFX tests:
+Contains FxJUnit4Runner](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/test/FxJUnit4Runner.html) - a JUnit runner to execute JavaFX tests:
 ```
 @RunWith(FxJUnit4Runner.class)
 public class MyControlTest {
