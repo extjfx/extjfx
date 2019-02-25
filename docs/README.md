@@ -390,7 +390,7 @@ with the difference that it doesn't require a separate view class per FXML.
 
 ## extjfx-test
 
-Contains FxJUnit4Runner](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/test/FxJUnit4Runner.html) - a JUnit runner to execute JavaFX tests:
+Contains [FxJUnit4Runner](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/test/FxJUnit4Runner.html) - a JUnit runner to execute JavaFX tests:
 ```
 @RunWith(FxJUnit4Runner.class)
 public class MyControlTest {
@@ -410,7 +410,7 @@ public class MyControlTest {
 ## extjfx-samples
 
 Sample application with chart examples: zooming, panning, decorations, HeatMapChart, etc. 
-Download the [executable jar](https://github.com/extjfx/extjfx/releases/latest/extjfx-samples-0.0.1.jar) and run:
+Download the [executable jar](https://github.com/extjfx/extjfx/releases/download/v0.0.1/extjfx-samples-0.0.1.jar) with samples and run:
 
 ```
 java -jar extjfx-samples-[version].jar
