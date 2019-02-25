@@ -5,6 +5,7 @@ jdk:
 script:
   - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=false -B -V
   - xvfb-run mvn test -B
+  - mvn javadoc:aggregate
 before_deploy:
   - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
   - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
@@ -27,8 +28,7 @@ deploy:
     skip_cleanup: true
     on:
       repo: extjfx/extjfx
-      draft: true
-#      tags: true
+      tags: true
       
   - provider: pages
     skip-cleanup: true
