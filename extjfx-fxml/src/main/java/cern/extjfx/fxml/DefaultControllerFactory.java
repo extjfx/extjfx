@@ -74,7 +74,6 @@ import javax.inject.Named;
  * </pre>
  * <p>
  * The class is not synchronized. If multiple threads access it concurrently, it must be synchronized externally.
- * </p>
  */
 public class DefaultControllerFactory {
     
@@ -214,8 +213,7 @@ public class DefaultControllerFactory {
     /**
      * Sets the specified instance provider to be used by the factory to retrieve instances of necessary types.
      * <p>
-     * By default it's initialized to {@link #DEFAULT_INSTANCE_PROVIDER}.
-     * </p>
+     * By default initialized to a provider creating new instances using default constructor.
      *
      * @param instanceProvider the instance provider
      * @throws NullPointerException if given provider is {@code null}
