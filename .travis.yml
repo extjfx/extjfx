@@ -1,17 +1,35 @@
 language: java
 sudo: false
 jdk:
-- oraclejdk8
+  - oraclejdk8
 script:
-  - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - xvfb-run mvn test -B #UI testing
-  - mvn javadoc:aggregate
+  - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=false -B -V
+  - xvfb-run mvn test -B
+before_deploy:
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
 deploy:
-  - provider: script
+  - provider: releases
+    api_key:
+      secure: QCwpc2Ok1zWNNQjaoUDHwLcrrx31jiaT9tzUC5XPmn8VS8Rq8SdCPYGwlS/qCPBgBbxzlj0Fe6bcvJIdZcw19/gc2JAzh0rFq1niqa7JTIltHMOYrEJGctxbYaB/2JPXwjkk+SYsecdkin9AMwBoAq6ObAFdSTZTiQarPAmyxvvOO9jAHn31PhWBDEva55wm8svGHpeE/HObL/Ufh8i7Go/kSn5Mz7tNB4dXa45wqCy5AAt8DP7q7ZWConJtoAirRQAVEg+lU/xSzVJ0JEDL3jiFpoPX15aFDOHk/GNasvcgn363Firq9KTQUDVu7KCefbEKc/wKRRTTp/jvvQWkOB8VA66I2UKuWPx8ZjXHbxv1ZSPzekSyPfW9zx90xa001PTuWcCQLXJEUdr+HQ4KP7PoQI0jkak4BoGNjFb6XAL8nMFt8AszBAbtnCN0WSMwZOW2yeQhXIoblEp8Vb5fuMGWwcJRy0R3RkaSzk9Ecdt4pEWCbCdLBmYfFfrZcXvxQWYRWgLoBiEcVydo7oYmJXB/QwHg5VVcNQk+h/mCEzV7clUqugOyzMolh9TWAgykSk6YrcNn8+FjTuBXSyrnfgyeLpWoFG80H5wtnDayeSBzksbE3gQqQIvGcm4HHmGi5Ecu+M7kZt4TliFAdoCiT6EeFkHNW9bkTkXg7hYYQ+E=
+    file: 
+      - extjfx-chart/target/extjfx-chart-$project_version.jar
+      - extjfx-chart/target/extjfx-chart-$project_version-sources.jar
+      - extjfx-chart/target/extjfx-chart-$project_version-javadoc.jar
+      - extjfx-fxml/target/extjfx-fxml-$project_version.jar
+      - extjfx-fxml/target/extjfx-fxml-$project_version-sources.jar
+      - extjfx-fxml/target/extjfx-fxml-$project_version-javadoc.jar
+      - extjfx-test/target/extjfx-test-$project_version.jar
+      - extjfx-test/target/extjfx-test-$project_version-sources.jar
+      - extjfx-test/target/extjfx-test-$project_version-javadoc.jar
+      - extjfx-samples/target/extjfx-samples-$project_version.jar
+      - extjfx-samples/target/extjfx-samples-$project_version-sources.jar
     skip_cleanup: true
-    script: echo Deploying...
-    on: 
-      tags: true
+    on:
+      repo: extjfx/extjfx
+      draft: true
+#      tags: true
+      
   - provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN  
