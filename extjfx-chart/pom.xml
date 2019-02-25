@@ -61,7 +61,21 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+		<repository>
+			<id>bintray-repo-maven-example</id>
+			<url>https://bintray.com/extjfx/extjfx-repo/extjfx-chart/;publish=1</url>
+		</repository>
+	</distributionManagement>
 </project>
