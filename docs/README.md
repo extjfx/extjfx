@@ -8,9 +8,12 @@ The library consists of 3 modules:
 - [extjfx-chart](#extjfx-chart): zooming, panning, data annotations, value/range indicators, chart decorations, overlaying different types of charts, etc.
 - [extjfx-fxml](#extjfx-fxml): `FxmlView` class that simplifies loading FXML files using conventional names
 - [extjfx-test](#extjfx-test): `FxJUnit4Runner` to execute GUI tests
+- [extjfx-samples](#extjfx-samples): Executable jar with chart samples
 
+#Build Artifacts 
+* [JavaDoc](https://extjfx.github.io/extjfx/apidocs/)
+* [Latest Release](https://github.com/extjfx/extjfx/releases/latest)
 
-[](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/)
 ## extjfx-chart
 #### XYChartPane
 The central class of the `cern.extjfx.chart` package is [XYChartPane](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/XYChartPane.html). It is a container that can hold one or more instances of [XYChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/XYChart.html) (e.g. [LineChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/LineChart.html), [AreaChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/AreaChart.html), [BarChart](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/BarChart.html)). `XYChartPane` brings support for overlaying different chart types on top of each other (as on the figure below) and possibility to add chart plugins (instances of [XYChartPlugin](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/XYChartPlugin.html)) which can be either interacting components e.g. [Zoomer](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/Zoomer.html) or [Panner](https://extjfx.github.io/extjfx/apidocs/cern/extjfx/chart/plugins/Panner.html), or passive graphical elements drawn on the chart such as labels or data indicators.
@@ -404,3 +407,12 @@ public class MyControlTest {
     }
 }
 ```
+## extjfx-samples
+
+Sample application with chart examples: zooming, panning, decorations, HeatMapChart, etc. 
+Download the [executable jar](https://github.com/extjfx/extjfx/releases/latest/extjfx-samples-0.0.1.jar) and run:
+
+```
+java -jar extjfx-samples-[version].jar
+```
+
