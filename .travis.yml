@@ -28,8 +28,7 @@ deploy:
     skip_cleanup: true
     on:
       repo: extjfx/extjfx
-      draft: true
-#      tags: true
+      tags: true
       
   - provider: pages
     skip-cleanup: true
