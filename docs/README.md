@@ -10,7 +10,7 @@ The library consists of 3 modules:
 - [extjfx-test](#extjfx-test): `FxJUnit4Runner` to execute GUI tests
 - [extjfx-samples](#extjfx-samples): Executable jar with chart samples
 
-#Build Artifacts 
+## Build Artifacts 
 * [JavaDoc](https://extjfx.github.io/extjfx/apidocs/)
 * [Latest Release](https://github.com/extjfx/extjfx/releases/latest)
 
